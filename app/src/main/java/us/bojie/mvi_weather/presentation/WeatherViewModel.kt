@@ -28,8 +28,9 @@ class WeatherViewModel @Inject constructor(
                 error = null
             )
 
-            locationTracker.getCurrentLocation()?.let {location ->
-                when(val result = repository.getWeatherData(location.latitude, location.longitude)) {
+            locationTracker.getCurrentLocation()?.let { location ->
+                when (val result =
+                    repository.getWeatherData(location.latitude, location.longitude)) {
                     is Resource.Success -> {
                         state = state.copy(
                             weatherInfo = result.data,
